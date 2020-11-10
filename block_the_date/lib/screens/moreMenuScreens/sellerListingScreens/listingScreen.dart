@@ -32,48 +32,68 @@ class _SellerListingScreenState extends State<SellerListingScreen> {
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
                         width: MediaQuery.of(context).size.width * 100,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:4.0, right: 4),
-                          child: Image.asset(
-                            'images/bakersDelight.png',
-                            fit: BoxFit.fill,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff000000),
+                          image: new DecorationImage(
+                              fit: BoxFit.cover,
+                              colorFilter:
+                              ColorFilter.mode(Color(0xff000000).withOpacity(0.6),
+                                  BlendMode.dstATop),
+                              image: AssetImage('images/bakersDelight.png')
                           ),
                         ),
+                        // child: Padding(
+                        //   padding: const EdgeInsets.only(left:4.0),
+                        //   child: Image.asset('images/bakersDelight.png',
+                        //      fit: BoxFit.fill,
+                        //       color: Colors.black.withOpacity(0.32),
+                        //       colorBlendMode: BlendMode.dstATop,
+                        //   ),
+                        // )
                       );
                     }),
           ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 26.0, left: 16),
-                  child: IconButton(
-                    icon: ImageIcon(
-                      AssetImage(
-                        'images/cancel_icon.png',
-                      ),
-                      color: appWhite,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              ShopScreen(),
-                          transitionDuration: Duration(seconds: 0),
+                  padding: const EdgeInsets.only(top: 26.0, left: 8),
+                  child: Container(
+                    child: IconButton(
+                      icon: Transform.scale(
+                        scale: 1.25,
+                        child: ImageIcon(
+                          AssetImage(
+                            'images/clear.png',
+                          ),
+                          color: appWhite,
                         ),
-                      );
-                    },
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                ShopScreen(),
+                            transitionDuration: Duration(seconds: 0),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 26.0, left: 16),
+                  padding: const EdgeInsets.only(top: 26.0, right: 16),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.add_a_photo_outlined,
-                      color: appWhite,
+                    icon: Transform.scale(
+                      scale: 1.25,
+                      child: ImageIcon(
+                        AssetImage('images/addImg.png'),
+                        color: appWhite,
+                        size: 24,
+                      ),
                     ),
                     onPressed: () {},
                   ),
@@ -84,11 +104,13 @@ class _SellerListingScreenState extends State<SellerListingScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16.0, right: 16),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.edit_rounded,
-                      color: appWhite,
-                      size: 24,
-                    ),
+                    icon: Transform.scale(
+                        scale: 1.25,
+                        child: ImageIcon(
+                          AssetImage('images/edit.png'),
+                          color: appWhite,
+                          size: 24,
+                        )),
                     onPressed: () {},
                   ),
                 ),

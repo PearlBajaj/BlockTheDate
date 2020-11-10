@@ -36,35 +36,44 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 26.0, left: 16),
-                  child: IconButton(
-                    icon: ImageIcon(
-                      AssetImage(
-                        'images/cancel_icon.png',
-                      ),
-                      color: appWhite,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              EventScreen(),
-                          transitionDuration: Duration(seconds: 0),
+                  padding: const EdgeInsets.only(top: 26.0, left: 8),
+                  child: Container(
+                    child: IconButton(
+                      icon: Transform.scale(
+                        scale: 1.25,
+                        child: ImageIcon(
+                          AssetImage(
+                            'images/clear.png',
+                          ),
+                          color: appWhite,
                         ),
-                      );
-                    },
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                EventScreen(),
+                            transitionDuration: Duration(seconds: 0),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 26.0, left: 16),
+                  padding: const EdgeInsets.only(top: 26.0, right: 16),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.add_a_photo_outlined,
-                      color: appWhite,
+                    icon: Transform.scale(
+                      scale: 1.25,
+                      child: ImageIcon(
+                        AssetImage('images/addImg.png'),
+                        color: appWhite,
+                        size: 24,
+                      ),
                     ),
                     onPressed: () {},
                   ),
@@ -75,11 +84,13 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16.0, right: 16),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.edit_rounded,
-                      color: appWhite,
-                      size: 24,
-                    ),
+                    icon: Transform.scale(
+                        scale: 1.25,
+                        child: ImageIcon(
+                          AssetImage('images/edit.png'),
+                          color: appWhite,
+                          size: 24,
+                        )),
                     onPressed: () {},
                   ),
                 ),
@@ -89,7 +100,7 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 16.0, bottom: 16),
                   child: Text(
-                    '#BlockTheDateApp',
+                    'Birthday Party',
                     style: boldTextStyle(24, appWhite),
                   ),
                 ),
@@ -100,131 +111,137 @@ class _NewTaskScreenState extends State<NewTaskScreen> {
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Stack(
           children: <Widget>[
-            SizedBox(
-              height: MediaQuery.of(context).size.height/18.57,
-            ),
-            ListView(
-              shrinkWrap: true,
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                ListTile(
-                  leading: IconButton(
-                    onPressed: (){
-
-                    },
-                    icon: ImageIcon(
-                      AssetImage('images/addTasks.png'),
-                      color: appBlue,
-                    ),
-                  ),
-                  title: Text(
-                    'Create Tasks',
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
-                        color: Color(0xff333333),
-                        fontWeight: FontWeight.w400),
-                  ),
-                  trailing: Icon(Icons.add, color: appBlue,),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height/18.57,
                 ),
-                ListTile(
-                  leading: IconButton(
-                    onPressed: (){
-                      setState(() {
-                        if(_iconColor1 == Color(0xffcccccc)){
-                          _iconColor1= Color(0xff79BF0F);
-                        }
-                        else{
-                          _iconColor1 = Color(0xffcccccc);
-                        }
+                ListView(
+                  shrinkWrap: true,
+                  children: <Widget>[
+                    ListTile(
+                      leading: IconButton(
+                        onPressed: (){
 
-                      });
-                    },
-                    icon: ImageIcon(
-                      AssetImage('images/tick_grey.png'),
-                      color: _iconColor1,
+                        },
+                        icon: ImageIcon(
+                          AssetImage('images/addTasks.png'),
+                          color: appBlue,
+                        ),
+                      ),
+                      title: Text(
+                        'Create Tasks',
+                        style: GoogleFonts.montserrat(
+                            fontSize: 14,
+                            color: Color(0xff333333),
+                            fontWeight: FontWeight.w400),
+                      ),
+                      trailing: Icon(Icons.add, color: appBlue,),
                     ),
-                  ),
-                  title: Text(
-                    'Create Wireframes for App',
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
-                        color: Color(0xff333333),
-                        fontWeight: FontWeight.w400),
-                  ),
-                  trailing: ImageIcon(
-                    AssetImage('images/dots.png'),
-                    color: Color(0xff333333),
-                  ),
-                ),
-                ListTile(
-                  leading: IconButton(
-                    onPressed: (){
-                      setState(() {
-                        if(_iconColor2 == Color(0xffcccccc)){
-                          _iconColor2 = Color(0xff79BF0F);
-                        }
-                        else{
-                          _iconColor2 = Color(0xffcccccc);
-                        }
+                    ListTile(
+                      leading: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            if(_iconColor1 == Color(0xffcccccc)){
+                              _iconColor1= Color(0xff79BF0F);
+                            }
+                            else{
+                              _iconColor1 = Color(0xffcccccc);
+                            }
 
-                      });
-                    },
-                    icon: ImageIcon(
-                      AssetImage('images/tick_grey.png'),
-                      color: _iconColor2,
-                    ),
-                  ),
-                  title: Text(
-                    'Create High Fidelity User Interface',
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
+                          });
+                        },
+                        icon: ImageIcon(
+                          AssetImage('images/tick_grey.png'),
+                          color: _iconColor1,
+                        ),
+                      ),
+                      title: Text(
+                        'Create Wireframes for App',
+                        style: GoogleFonts.montserrat(
+                            fontSize: 14,
+                            color: Color(0xff333333),
+                            fontWeight: FontWeight.w400),
+                      ),
+                      trailing: ImageIcon(
+                        AssetImage('images/dots.png'),
                         color: Color(0xff333333),
-                        fontWeight: FontWeight.w400),
-                  ),
-                  trailing: ImageIcon(
-                    AssetImage('images/dots.png'),
-                    color: Color(0xff333333),
-                  ),
-                ),
-                ListTile(
-                  leading: IconButton(
-                    onPressed: (){
-                      setState(() {
-                        if(_iconColor3 == Color(0xffcccccc)){
-                          _iconColor3 = Color(0xff79BF0F);
-                        }
-                        else{
-                          _iconColor3 = Color(0xffcccccc);
-                        }
+                      ),
+                    ),
+                    ListTile(
+                      leading: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            if(_iconColor2 == Color(0xffcccccc)){
+                              _iconColor2 = Color(0xff79BF0F);
+                            }
+                            else{
+                              _iconColor2 = Color(0xffcccccc);
+                            }
 
-                      });
-                    },
-                    icon: ImageIcon(
-                      AssetImage('images/tick_grey.png'),
-                      color: _iconColor3,
-                    ),
-                  ),
-                  title: Text(
-                    'Create Prototype for User Testing',
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
+                          });
+                        },
+                        icon: ImageIcon(
+                          AssetImage('images/tick_grey.png'),
+                          color: _iconColor2,
+                        ),
+                      ),
+                      title: Text(
+                        'Create High Fidelity User Interface',
+                        style: GoogleFonts.montserrat(
+                            fontSize: 14,
+                            color: Color(0xff333333),
+                            fontWeight: FontWeight.w400),
+                      ),
+                      trailing: ImageIcon(
+                        AssetImage('images/dots.png'),
                         color: Color(0xff333333),
-                        fontWeight: FontWeight.w400),
-                  ),
-                  trailing: ImageIcon(
-                    AssetImage('images/dots.png'),
-                    color: Color(0xff333333),
-                  ),
+                      ),
+                    ),
+                    ListTile(
+                      leading: IconButton(
+                        onPressed: (){
+                          setState(() {
+                            if(_iconColor3 == Color(0xffcccccc)){
+                              _iconColor3 = Color(0xff79BF0F);
+                            }
+                            else{
+                              _iconColor3 = Color(0xffcccccc);
+                            }
+
+                          });
+                        },
+                        icon: ImageIcon(
+                          AssetImage('images/tick_grey.png'),
+                          color: _iconColor3,
+                        ),
+                      ),
+                      title: Text(
+                        'Create Prototype for User Testing',
+                        style: GoogleFonts.montserrat(
+                            fontSize: 14,
+                            color: Color(0xff333333),
+                            fontWeight: FontWeight.w400),
+                      ),
+                      trailing: ImageIcon(
+                        AssetImage('images/dots.png'),
+                        color: Color(0xff333333),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-            Expanded(child: Container(),),
-            SaveButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+            Align(
+              alignment: Alignment.bottomRight,
+              child: SaveButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
             ),
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:block_the_date/screens/homeScreens/eventListScreen.dart';
 import 'package:block_the_date/screens/homeScreens/homeScreen.dart';
 import 'package:block_the_date/screens/homeScreens/notificationScreen.dart';
 import 'package:block_the_date/screens/loginScreen.dart';
@@ -23,16 +24,8 @@ class MyApp extends StatelessWidget {
         'Login':(BuildContext context) => LoginScreen(),
         'Home': (BuildContext context) => HomeScreen(),
         'ShopList': (BuildContext context) => ShopsList(),
-        // 'Profile': (BuildContext context) => Profile(),
         'Notification': (BuildContext context) => NotificationScreen(),
-        // 'RSVPInvites': (BuildContext context) => RSVPInvites(),
-        // 'Chat': (BuildContext context) => ChatScreen(),
-        // 'Requests': (BuildContext context) => RequestScreen(),
-        // 'PersonalChat': (BuildContext context) => PersonalChatScreen(),
-        // 'Event': (BuildContext context) => EventScreen(),
-        // 'NewEvent': (BuildContext context) => NewEvent(),
-        // 'AddTask': (BuildContext context) => AddTask(),
-        // 'SellerListing': (BuildContext context) => SellerListing(),
+        'EventList': (BuildContext context) => EventListScreen(),
       },
     );
   }

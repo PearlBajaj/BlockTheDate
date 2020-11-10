@@ -13,6 +13,7 @@ class BecomeSellerScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(66.0),
         child: CustomNotificationAppBar(
           title: 'Become a Seller',
+          leading: true,
         ),
       ),
       body: Column(

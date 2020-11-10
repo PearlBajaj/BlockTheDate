@@ -9,12 +9,12 @@ class RSVPInvitesScreen extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(66.0),
-          child: CustomNotificationAppBar(title: 'RSVP Invites',)
+          child: CustomNotificationAppBar(title: 'RSVP Invites', leading: false,)
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left:16.0,right: 16),
         child: Container(
-            child: PendingRequests(height: MediaQuery.of(context).size.height,)),
+            child: PendingRequestsRSVP()),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(index: 4,),
     );

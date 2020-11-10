@@ -18,4 +18,5 @@ Color textA = Color(0xffaaaaaa);
 Color textC = Color(0xffcccccc);
 Color text3 = Color(0xff333333);
 Color text6 = Color(0xff666666);
+Color appLilac = Color(0xffE2E2FF);
 

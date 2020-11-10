@@ -15,48 +15,39 @@ class EventListContainer extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Row(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 20),
-            child: Container(
-              height: 50,
-              width: 50,
-              child: Text(
-                DateFormat("hh:mm a").format(DateTime.parse(time)),
-                style: normalTextStyle(12, text3),
-              ),
-            ),
+    return Row(children: <Widget>[
+      Padding(
+        padding: const EdgeInsets.only(left: 16.0, right: 20),
+        child: Container(
+          height: 50,
+          width: 50,
+          child: Text(
+            DateFormat("hh:mm a").format(DateTime.parse(time)),
+            style: normalTextStyle(12, text3),
           ),
-          Container(
-              height: 70,
-              width: 276,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    type,
-                    style: normalTextStyle(
-                      12,
-                      eventColor(type),
-                    ),
-                  ),
-                  Text(
-                    description,
-                    style: normalTextStyle(12, text3),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              )),
-        ]),
-        Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
-          child: Line(),
         ),
-      ],
-    );
+      ),
+      Container(
+          width: 276,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                type,
+                style: normalTextStyle(
+                  12,
+                  eventColor(type),
+                ),
+              ),
+              Text(
+                description,
+                style: normalTextStyle(12, text3),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          )),
+    ]);
     ;
   }
 }

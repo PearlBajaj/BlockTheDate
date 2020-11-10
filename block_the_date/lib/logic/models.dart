@@ -30,16 +30,24 @@ class PendingRequestsModel{
   }
 }
 
+class ListItem {
+  int value;
+  String name;
+
+  ListItem(this.value, this.name);
+}
 
 class ChatModel{
   String name;
   String text;
   String time;
+  String gender;
 
-  ChatModel( String thisName, String thisText, String thisTime) {
+  ChatModel( String thisName, String thisText, String thisTime, String thisGender) {
     name = thisName;
     text = thisText;
     time = thisTime;
+    gender = thisGender;
   }
 }
 
@@ -47,10 +55,12 @@ class ChatModel{
 class RequestModel{
   String name;
   String number;
+  String gender;
 
-  RequestModel( String thisName, String thisNumber) {
+  RequestModel( String thisName, String thisNumber,  String thisGender) {
     name = thisName;
     number = thisNumber;
+    gender = thisGender;
   }
 }
 

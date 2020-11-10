@@ -20,7 +20,7 @@ class ShopsList extends StatelessWidget {
       'Savarkar Nagar, Chandivali, Powai, Mumbai, Maharashtra 400072',
       'Mr. Bruce Lucas',
       4,
-      'images/bakersDelight.png',
+      'images/theCakeShop.png',
     ),
     ShopDetails(
       'The Party Hunters',
@@ -36,7 +36,7 @@ class ShopsList extends StatelessWidget {
       '1, Orchard Ave, Panchkutir Ganesh Nagar, Powai, Mumbai, Maharashtra 400076',
       'Eugene Grand',
       3,
-      'images/bakersDelight.png',
+      'images/38Degrees.png',
     ),
     ShopDetails(
       'Mix & Match',
@@ -44,7 +44,7 @@ class ShopsList extends StatelessWidget {
       'New Mhada Colony, Savarkar Nagar, Chandivali, Powai, Mumbai, Maharashtra 400076',
       'MR. Terry Marshall',
       3,
-      'images/bakersDelight.png',
+      'images/Mix&Match.png',
     ),
   ];
   @override
@@ -74,33 +74,29 @@ class ShopsList extends StatelessWidget {
           actions: <Widget>[
             IconButton(
                 icon: ImageIcon(
-                  AssetImage('images/filter.png'),
-                  color: Colors.white,
-                )
-            ),
+              AssetImage('images/filter.png'),
+              color: Colors.white,
+            )),
             IconButton(
                 icon: ImageIcon(
-                  AssetImage('images/search.png'),
-                  color: Colors.white,
-                )
-            ),
+              AssetImage('images/search.png'),
+              color: Colors.white,
+            )),
           ],
         ),
       ),
       body: ListView.builder(
           itemCount: _shopDetails.length,
-          itemBuilder: (context,index){
+          itemBuilder: (context, index) {
             return ShopContainer(
               name: _shopDetails[index].name,
               owner: _shopDetails[index].owner,
-              address:_shopDetails[index].address,
+              address: _shopDetails[index].address,
               number: _shopDetails[index].number,
               stars: _shopDetails[index].stars,
               image: _shopDetails[index].image,
             );
-          }
-      ),
+          }),
     );
   }
 }
-

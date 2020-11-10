@@ -89,25 +89,23 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       onTap: _onItemTapped,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(
-            Icons.home_outlined,
-          ),
+          icon: ImageIcon(AssetImage('images/homeNav.png')),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('images/chat.png')),
+          icon: ImageIcon(AssetImage('images/chatNav.png')),
           label: 'Chat',
         ),
         BottomNavigationBarItem(
-          icon: ImageIcon(AssetImage('images/logo.png')),
+          icon: ImageIcon(AssetImage('images/eventNav.png')),
           label: 'Events',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.store_mall_directory_outlined),
+          icon: ImageIcon(AssetImage('images/shopNav.png')),
           label: 'Shop',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.menu),
+          icon: ImageIcon(AssetImage('images/moreNav.png')),
           label: 'More',
         ),
       ],

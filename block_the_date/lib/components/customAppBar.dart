@@ -30,12 +30,13 @@ class CustomAppBar extends StatelessWidget {
 
 class CustomNotificationAppBar extends StatelessWidget {
   final String title;
+  final bool leading;
 
-  const CustomNotificationAppBar({Key key, this.title}) : super(key: key);
+  const CustomNotificationAppBar({Key key, this.title, this.leading}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: leading,
       centerTitle: false,
       shape: ContinuousRectangleBorder(
         borderRadius: BorderRadius.only(

@@ -5,7 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DMScreen extends StatefulWidget {
   final String name;
-  const DMScreen({this.name});
+  final String image;
+  const DMScreen({this.name, this.image});
 
   @override
   _DMScreenState createState() => _DMScreenState();
@@ -13,8 +14,11 @@ class DMScreen extends StatefulWidget {
 
 class _DMScreenState extends State<DMScreen> {
   TextEditingController messageController = TextEditingController();
+  String image;
   @override
   initState() {
+    image = widget.image;
+    print(image);
     messageController = new TextEditingController();
     super.initState();
   }
@@ -32,33 +36,37 @@ class _DMScreenState extends State<DMScreen> {
               bottomRight: Radius.circular(50.0),
             ),
           ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                height: 32,
-                width: 32,
-                child: CircleAvatar(
-                  child: ClipOval(
-                    child: Image.asset(
-                      'images/lady.png',
-                      fit: BoxFit.fitHeight,
+          title: Align(
+            alignment: Alignment.centerLeft,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 32,
+                  width: 32,
+                  child: CircleAvatar(
+                    child: ClipOval(
+                      child: Image.asset(
+                        widget.image,
+                        fit: BoxFit.fitHeight,
+                      ),
                     ),
+                    radius: 28.0,
+                    // backgroundImage: ,
+                    backgroundColor: Color(0xffECECEC),
                   ),
-                  radius: 28.0,
-                  // backgroundImage: ,
-                  backgroundColor: Color(0xffECECEC),
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  widget.name,
-                  style: boldTextStyle(16, appWhite),
-                  textAlign: TextAlign.left,
-                ),
-              )
-            ],
+                Container(
+                  padding: const EdgeInsets.only(left:12.0),
+                  child: Text(
+                    widget.name,
+                    style: boldTextStyle(16, appWhite),
+                    textAlign: TextAlign.left,
+                  ),
+                )
+              ],
+            ),
           ),
           backgroundColor: appBlue,
         ),

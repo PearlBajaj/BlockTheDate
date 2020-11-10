@@ -17,6 +17,7 @@ class _ShopScreenState extends State<ShopScreen> {
       body: Stack(
         children: <Widget>[
           SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Container(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -173,7 +174,7 @@ class _ShopsBottomScreenState extends State<ShopsBottomScreen> {
       'Savarkar Nagar, Chandivali, Powai, Mumbai, Maharashtra 400072',
       'Mr. Bruce Lucas',
       4,
-      'images/bakersDelight.png',
+      'images/theCakeShop.png',
     ),
     ShopDetails(
       'The Party Hunters',
@@ -189,7 +190,7 @@ class _ShopsBottomScreenState extends State<ShopsBottomScreen> {
       '1, Orchard Ave, Panchkutir Ganesh Nagar, Powai, Mumbai, Maharashtra 400076',
       'Eugene Grand',
       3,
-      'images/bakersDelight.png',
+      'images/38Degrees.png',
     ),
     ShopDetails(
       'Mix & Match',
@@ -197,13 +198,13 @@ class _ShopsBottomScreenState extends State<ShopsBottomScreen> {
       'New Mhada Colony, Savarkar Nagar, Chandivali, Powai, Mumbai, Maharashtra 400076',
       'MR. Terry Marshall',
       3,
-      'images/bakersDelight.png',
+      'images/Mix&Match.png',
     ),
   ];
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height / 2.35,
+      height: MediaQuery.of(context).size.height / 3.15,
       child: StatefulBuilder(
         builder: (BuildContext context, StateSetter stateSetter) {
           return Padding(
@@ -223,11 +224,11 @@ class _ShopsBottomScreenState extends State<ShopsBottomScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(24))),
                   ),
                 ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
+                Padding(
+                  padding: const EdgeInsets.only(top:12, left:16.0, bottom:12,right: 16),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
                         'Shops',
                         style: GoogleFonts.montserrat(
                           fontSize: 16,
@@ -235,31 +236,33 @@ class _ShopsBottomScreenState extends State<ShopsBottomScreen> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: ImageIcon(
+                      Expanded(
+                        child: Container(),
+                      ),
+                      ImageIcon(
                         AssetImage('images/filter.png'),
                         color: appBlue,
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
                 CarouselSlider.builder(
                     options: CarouselOptions(
                         height: MediaQuery.of(context).size.height / 4.5),
                     itemCount: _shopDetails.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return ShopContainer(
-                        name: _shopDetails[index].name,
-                        owner: _shopDetails[index].owner,
-                        address:_shopDetails[index].address,
-                        number: _shopDetails[index].number,
-                        stars: _shopDetails[index].stars,
-                        image: _shopDetails[index].image,
+                      return GestureDetector(
+                        onTap: (){
+                          Navigator.pushNamed(context, 'ShopList');
+                        },
+                        child: ShopContainer(
+                          name: _shopDetails[index].name,
+                          owner: _shopDetails[index].owner,
+                          address:_shopDetails[index].address,
+                          number: _shopDetails[index].number,
+                          stars: _shopDetails[index].stars,
+                          image: _shopDetails[index].image,
+                        ),
                       );
                     })
               ],
@@ -292,109 +295,104 @@ class ShopContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: GestureDetector(
-        onTap:(){
-          Navigator.pushNamed(context, 'ShopList');
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8.0),
-            color: Color(0xFFFFFFFF),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xffCCCCCC),
-                blurRadius: 2.0,
-                spreadRadius: 0.0,
-              )
-            ],
-          ),
-          child: Row(
-            children: <Widget>[
-              Container(
-                  width: MediaQuery.of(context).size.width / 4,
-                  height: MediaQuery.of(context).size.height / 4.5,
-                  child: Image(
-                    image: AssetImage(image),
-                    fit: BoxFit.fill,
-                  )),
-              Padding(
-                padding: const EdgeInsets.only(left: 12.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.09,
-                      child: Text(
-                        name,
-                        style: GoogleFonts.montserrat(
-                          fontSize: 16,
-                          color: Color(0xff333333),
-                          fontWeight: FontWeight.bold,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8.0),
+          color: Color(0xFFFFFFFF),
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xffCCCCCC),
+              blurRadius: 2.0,
+              spreadRadius: 0.0,
+            )
+          ],
+        ),
+        child: Row(
+          children: <Widget>[
+            Container(
+                width: MediaQuery.of(context).size.width / 4,
+                height: MediaQuery.of(context).size.height / 4.5,
+                child: Image(
+                  image: AssetImage(image),
+                  fit: BoxFit.fill,
+                )),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      name,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 16,
+                        color: Color(0xff333333),
+                        fontWeight: FontWeight.bold,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
-                    SizedBox(
-                      height: 2,
-                    ),
-                    StarDisplay(
-                      value: stars,
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.09,
-                      child: Text(
-                        owner,
-                        style: GoogleFonts.montserrat(
-                          fontSize: 10,
-                          color: Color(0xff555555),
-                          fontWeight: FontWeight.normal,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                  ),
+                  SizedBox(
+                    height: 2,
+                  ),
+                  StarDisplay(
+                    value: stars,
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      owner,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 10,
+                        color: Color(0xff555555),
+                        fontWeight: FontWeight.normal,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.09,
-                      child: Text(
-                        number,
-                        style: GoogleFonts.montserrat(
-                          fontSize: 10,
-                          color: Color(0xff555555),
-                          fontWeight: FontWeight.normal,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      number,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 10,
+                        color: Color(0xff555555),
+                        fontWeight: FontWeight.normal,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                     ),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.09,
-                      child: Text(
-                        address,
-                        style: GoogleFonts.montserrat(
-                          fontSize: 10,
-                          color: Color(0xff555555),
-                          fontWeight: FontWeight.normal,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
+                  ),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    child: Text(
+                      address,
+                      style: GoogleFonts.montserrat(
+                        fontSize: 10,
+                        color: Color(0xff555555),
+                        fontWeight: FontWeight.normal,
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
                     ),
-                  ],
-                ),
-              )
-            ],
-          ),
+                  ),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

@@ -25,35 +25,44 @@ class NewEventScreen extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 26.0, left: 16),
-                  child: IconButton(
-                    icon: ImageIcon(
-                      AssetImage(
-                        'images/cancel_icon.png',
-                      ),
-                      color: appWhite,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                          pageBuilder: (context, animation1, animation2) =>
-                              EventScreen(),
-                          transitionDuration: Duration(seconds: 0),
+                  padding: const EdgeInsets.only(top: 26.0, left: 8),
+                  child: Container(
+                    child: IconButton(
+                      icon: Transform.scale(
+                        scale: 1.25,
+                        child: ImageIcon(
+                          AssetImage(
+                            'images/clear.png',
+                          ),
+                          color: appWhite,
                         ),
-                      );
-                    },
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                EventScreen(),
+                            transitionDuration: Duration(seconds: 0),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
               Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 26.0, left: 16),
+                  padding: const EdgeInsets.only(top: 26.0, right: 16),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.add_a_photo_outlined,
-                      color: appWhite,
+                    icon: Transform.scale(
+                      scale: 1.25,
+                      child: ImageIcon(
+                        AssetImage('images/addImg.png'),
+                        color: appWhite,
+                        size: 24,
+                      ),
                     ),
                     onPressed: () {},
                   ),
@@ -64,11 +73,13 @@ class NewEventScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 16.0, right: 16),
                   child: IconButton(
-                    icon: Icon(
-                      Icons.edit_rounded,
-                      color: appWhite,
-                      size: 24,
-                    ),
+                    icon: Transform.scale(
+                        scale: 1.25,
+                        child: ImageIcon(
+                          AssetImage('images/edit.png'),
+                          color: appWhite,
+                          size: 24,
+                        )),
                     onPressed: () {},
                   ),
                 ),
@@ -87,321 +98,361 @@ class NewEventScreen extends StatelessWidget {
           ),
         ),
       ),
-      resizeToAvoidBottomInset: false,
-      resizeToAvoidBottomPadding: false,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: Stack(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(left: 16, right: 16),
+          SingleChildScrollView(
             child: Container(
-              height: 24,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    height: 24,
-                    width: 24,
-                    child: Image.asset('images/time.png'),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 22.5,
-                  ),
-                  Text(
-                    'Date & Time',
-                    style: normalTextStyle(14, text3),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 56.0, right: 16),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Text(
-                    'Mon, Oct 21, 2020',
-                    style: normalTextStyle(14, text3),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                Text(
-                  '03:30 PM',
-                  style: normalTextStyle(14, text3),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 56.0, right: 16),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.5,
-                  child: Text(
-                    'Mon, Oct 21, 2020',
-                    style: normalTextStyle(14, text3),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                Text(
-                  '04:30 PM',
-                  style: normalTextStyle(14, text3),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              showModalBottomSheet<void>(
-                shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(24.0)),
-                ),
-                context: context,
-                builder: (BuildContext context) {
-                  return EventOccurrence();
-                },
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    height: 24,
-                    width: 24,
-                    child: Image.asset('images/repeat.png'),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 22.5,
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 1.25,
-                    child: Text(
-                      'One Time Event',
-                      style: normalTextStyle(14, text3),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              showModalBottomSheet<void>(
-                shape: RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(top: Radius.circular(24.0)),
-                ),
-                context: context,
-                builder: (BuildContext context) {
-                  return ReminderSetter();
-                },
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16.0, right: 16),
-              child: Container(
-                height: 24,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+              height: MediaQuery.of(context).size.height,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16.0, right: 16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Container(
                       height: 24,
-                      width: 24,
-                      child: Image.asset('images/reminder.png'),
-                    ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 22.5,
-                    ),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 2.5,
-                      child: Text(
-                        'Tuesday Oct 20, 2020',
-                        style: normalTextStyle(14, text3),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            height: 24,
+                            width: 24,
+                            child: Image.asset('images/time.png'),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 22.5,
+                          ),
+                          Text(
+                            'Date & Time',
+                            style: normalTextStyle(14, text3),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      child: Container(),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 56.0, right: 16),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            child: Text(
+                              'Mon, Oct 21, 2020',
+                              style: normalTextStyle(14, text3),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(),
+                          ),
+                          Text(
+                            '03:30 PM',
+                            style: normalTextStyle(14, text3),
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      '08:30 PM',
-                      style: GoogleFonts.montserrat(
-                          fontSize: 14,
-                          color: Color(0xff333333),
-                          fontWeight: FontWeight.w400),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 56.0, right: 16),
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.5,
+                            child: Text(
+                              'Mon, Oct 21, 2020',
+                              style: normalTextStyle(14, text3),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(),
+                          ),
+                          Text(
+                            '04:30 PM',
+                            style: normalTextStyle(14, text3),
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet<void>(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(24.0)),
+                          ),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return EventOccurrence();
+                          },
+                        );
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: 24,
+                            width: 24,
+                            child: Image.asset('images/repeat.png'),
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width / 22.5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.25,
+                            child: Text(
+                              'One Time Event',
+                              style: normalTextStyle(14, text3),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        showModalBottomSheet<void>(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(24.0)),
+                          ),
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ReminderSetter();
+                          },
+                        );
+                      },
+                      child: Container(
+                        height: 24,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Container(
+                              height: 24,
+                              width: 24,
+                              child: Image.asset('images/reminder.png'),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 22.5,
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 2.5,
+                              child: Text(
+                                'Tuesday Oct 20, 2020',
+                                style: normalTextStyle(14, text3),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(),
+                            ),
+                            Text(
+                              '08:30 PM',
+                              style: GoogleFonts.montserrat(
+                                  fontSize: 14,
+                                  color: Color(0xff333333),
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                          color: Color(0xff707070),
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: 24,
+                          width: 24,
+                          child: Image.asset('images/email.png'),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 22.5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: Text(
+                            'user@gmail.com',
+                            style: GoogleFonts.montserrat(
+                                fontSize: 14,
+                                color: Color(0xff333333),
+                                fontWeight: FontWeight.w400),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: 24,
+                          width: 24,
+                          child: Image.asset('images/timezone.png'),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 22.5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: Text(
+                            'Indian Standard Time',
+                            style: normalTextStyle(14, text3),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 1.0,
+                      decoration: BoxDecoration(
+                          color: Color(0xff707070),
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: 24,
+                          width: 24,
+                          child: Image.asset('images/addGuests.png'),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 22.5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: Text(
+                            'Add Guests',
+                            style: normalTextStyle(14, textA),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          height: 24,
+                          width: 24,
+                          child: Image.asset('images/location.png'),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 22.5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: Text(
+                            'Mumbai, Maharashtra, India',
+                            style: normalTextStyle(14, text3),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          height: 24,
+                          width: 24,
+                          child: Image.asset('images/description.png'),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 22.5,
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width / 1.25,
+                          child: Text(
+                            'Add Description ',
+                            style: normalTextStyle(14, textA),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          height: 24,
+                          width: 24,
+                          child: Image.asset('images/attachments.png'),
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width / 22.5,
+                        ),
+                        Container(
+                          height: 24,
+                          width: MediaQuery.of(context).size.width / 2.8,
+                          decoration: BoxDecoration(
+                            color: appLilac,
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: Stack(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        child: Image.asset(
+                                          'images/img.png',
+                                          fit: BoxFit.fill,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 2,
+                                      ),
+                                      Text(
+                                        'IMG_7004568.jpg',
+                                        style: normalTextStyle(10, text5),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Align(
+                                  alignment: Alignment.topRight,
+                                  child: Icon(
+                                    Icons.clear,
+                                    size: 12,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Container(
-              height: 1.0,
-              decoration: BoxDecoration(
-                  color: Color(0xff707070),
-                  borderRadius: BorderRadius.all(Radius.circular(24))),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: SaveButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 24,
-                  width: 24,
-                  child: Image.asset('images/email.png'),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 22.5,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.25,
-                  child: Text(
-                    'user@gmail.com',
-                    style: GoogleFonts.montserrat(
-                        fontSize: 14,
-                        color: Color(0xff333333),
-                        fontWeight: FontWeight.w400),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 24,
-                  width: 24,
-                  child: Image.asset('images/timezone.png'),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 22.5,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.25,
-                  child: Text(
-                    'Indian Standard Time',
-                    style: normalTextStyle(14, text3),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Container(
-              height: 1.0,
-              decoration: BoxDecoration(
-                  color: Color(0xff707070),
-                  borderRadius: BorderRadius.all(Radius.circular(24))),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 24,
-                  width: 24,
-                  child: Image.asset('images/addGuests.png'),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 22.5,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.25,
-                  child: Text(
-                    'Add Guests',
-                    style: normalTextStyle(14, textA),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 24,
-                  width: 24,
-                  child: Image.asset('images/location.png'),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 22.5,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.25,
-                  child: Text(
-                    'Mumbai, Maharashtra, India',
-                    style: normalTextStyle(14, text3),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 24,
-                  width: 24,
-                  child: Image.asset('images/description.png'),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 22.5,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 1.25,
-                  child: Text(
-                    'Add Description ',
-                    style: normalTextStyle(14, textA),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SaveButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
           ),
         ],
       ),
@@ -575,13 +626,13 @@ class _ReminderSetterState extends State<ReminderSetter> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        height: MediaQuery.of(context).size.height / 2.4,
+        height: MediaQuery.of(context).size.height / 3.1,
         child: StatefulBuilder(
           builder: (BuildContext context, StateSetter stateSetter) {
             return Padding(
               padding: const EdgeInsets.only(top: 8.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Container(
                     height: 4.0,
@@ -589,9 +640,6 @@ class _ReminderSetterState extends State<ReminderSetter> {
                     decoration: BoxDecoration(
                         color: Color(0xffCCCCCC),
                         borderRadius: BorderRadius.all(Radius.circular(24))),
-                  ),
-                  SizedBox(
-                    height: 40,
                   ),
                   Column(
                     children: <Widget>[
@@ -618,99 +666,103 @@ class _ReminderSetterState extends State<ReminderSetter> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 30, right: 30),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 4.0, bottom: 8),
-                                  child: Text(
-                                    'Daily',
-                                    style: GoogleFonts.montserrat(
-                                        fontSize: 14,
-                                        color: Color(0xff333333),
-                                        fontWeight: FontWeight.w400),
-                                  ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, bottom: 8),
+                                child: Text(
+                                  'Daily',
+                                  style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.w400),
                                 ),
-                                Container(
-                                  width:
-                                  MediaQuery.of(context).size.width / 2.5,
-                                  height: 40,
-                                  child: TextFormField(
-                                    style: GoogleFonts.montserrat(
-                                        fontSize: 14,
-                                        color: Color(0xff333333),
-                                        fontWeight: FontWeight.w400),
+                              ),
+                              Container(
+                                width:
+                                    MediaQuery.of(context).size.width / 2.5,
+                                height: 40,
+                                child: TextFormField(
+                                  style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.w400),
 
-                                    decoration: InputDecoration(
-                                      suffixIcon: Transform.scale(
-                                          scale: 0.75,
-                                          child: ImageIcon(
-                                            AssetImage('images/calendar.png'),
-                                            color: appBlue,
-                                          )),
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(8.0),
-                                      ),
+                                  decoration: InputDecoration(
+                                    suffixIcon: Transform.scale(
+                                        scale: 0.75,
+                                        child: ImageIcon(
+                                          AssetImage('images/calendar.png'),
+                                          color: appBlue,
+                                        )),
+                                    border: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(8.0),
                                     ),
-                                    controller: dateController,
-                                    keyboardType: TextInputType.datetime,
-                                    // validator: validator,
                                   ),
+                                  controller: dateController,
+                                  keyboardType: TextInputType.datetime,
+                                  // validator: validator,
                                 ),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 4.0, bottom: 8),
-                                  child: Text(
-                                    'Daily',
-                                    style: GoogleFonts.montserrat(
-                                        fontSize: 14,
-                                        color: Color(0xff333333),
-                                        fontWeight: FontWeight.w400),
-                                  ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, bottom: 8),
+                                child: Text(
+                                  'Daily',
+                                  style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.w400),
                                 ),
-                                Container(
-                                  width:
-                                  MediaQuery.of(context).size.width / 2.5,
-                                  height: 40,
-                                  child: TextFormField(
-                                    style: GoogleFonts.montserrat(
-                                        fontSize: 14,
-                                        color: Color(0xff333333),
-                                        fontWeight: FontWeight.w400),
-                                    decoration: InputDecoration(
-                                      suffixIcon: Transform.scale(
-                                          scale: 0.75,
-                                          child: ImageIcon(
-                                            AssetImage('images/time.png'),
-                                            color: appBlue,
-                                          )),
-                                      border: OutlineInputBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(8.0),
-                                      ),
+                              ),
+                              Container(
+                                width:
+                                    MediaQuery.of(context).size.width / 2.5,
+                                height: 40,
+                                child: TextFormField(
+                                  style: GoogleFonts.montserrat(
+                                      fontSize: 14,
+                                      color: Color(0xff333333),
+                                      fontWeight: FontWeight.w400),
+                                  decoration: InputDecoration(
+                                    suffixIcon: Transform.scale(
+                                        scale: 0.75,
+                                        child: ImageIcon(
+                                          AssetImage('images/time.png'),
+                                          color: appBlue,
+                                        )),
+                                    border: OutlineInputBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(8.0),
                                     ),
-                                    controller: timeController,
-                                    keyboardType: TextInputType.datetime,
-                                    // validator: validator,
                                   ),
+                                  controller: timeController,
+                                  keyboardType: TextInputType.datetime,
+                                  // validator: validator,
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 56,
+                      ),
                     ],
                   )
                 ],
